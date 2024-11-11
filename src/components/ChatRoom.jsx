@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { auth, firestore } from '@/lib/firebase'
 import { collection, orderBy, query, limit, serverTimestamp, addDoc } from 'firebase/firestore'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
@@ -11,6 +11,7 @@ export default function ChatRoom () {
   const [messages] = useCollectionData(queryOrder, { idField: 'id' })
   const [formValue, setFormValue] = useState('')
   const { uid, photoURL } = auth.currentUser
+
   const sendMessage = async (e) => {
     e.preventDefault()
     if (formValue) {
@@ -22,10 +23,14 @@ export default function ChatRoom () {
       }
       await addDoc(messagesRef, message)
       setFormValue('')
-      dummy.current.scrollIntoView({ behavior: 'smooth' })
     }
   }
   const dummy = useRef()
+
+  useEffect(() => {
+    dummy.current.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
+
   return (
     <>
     <main className='p-2.5 h-[80vh] overflow-y-scroll flex flex-col  space-y-4'>
