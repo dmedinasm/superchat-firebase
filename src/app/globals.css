@@ -5,23 +5,22 @@
 
 body {
     background-color: #282c34;
-  }
-
-  * {
     scrollbar-width: thin; 
-  }
-  
-  *::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     width: 0.25rem;
   }
   
-  *::-webkit-scrollbar-track {
+  ::-webkit-scrollbar-track {
     background: #1e1e24;
   }
   
-  *::-webkit-scrollbar-thumb {
+  ::-webkit-scrollbar-thumb {
     background: #6649b8;
   }
+  }
+
+   
+    
   
   @layer utilities {
    

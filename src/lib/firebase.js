@@ -3,7 +3,7 @@ import { getAuth, GoogleAuthProvider } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyB46H2VaM9PG2ZnEljXPZ7efSEdnLphGPk',
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: 'superchat-backend-eb0c8.firebaseapp.com',
   projectId: 'superchat-backend-eb0c8',
   storageBucket: 'superchat-backend-eb0c8.firebasestorage.app',
